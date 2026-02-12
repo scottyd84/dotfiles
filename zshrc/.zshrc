@@ -83,12 +83,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-plugins=(aliases)
-plugins=(git zsh-syntax-highlighting)
-plugins=(aliases)
+plugins=(git aliases zsh-syntax-highlighting)
 
-
+# Optional: Skip completion warnings
+ZSH_DISABLE_COMPFIX="true"
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -144,12 +142,6 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-# Path variables
-
-export PATH="/home/scott/.local/bin:$PATH"
-export PATH="~/.gem/gems/vimgolf-0.5.0/bin:$PATH"
-
-!
 # common directories
 alias dc='cd ~/.config'
 alias dl='cd ~/Downloads'
