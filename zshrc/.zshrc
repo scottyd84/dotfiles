@@ -86,6 +86,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git)
 plugins=(aliases)
 plugins=(git zsh-syntax-highlighting)
+plugins=(aliases)
+
 
 source $ZSH/oh-my-zsh.sh
 
