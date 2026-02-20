@@ -150,6 +150,7 @@ alias ws='cd ~/Workspace'
 alias docs='cd ~/Documents' 
 alias ds='cd ~/git/ds/'
 alias dv='cd ~/vaults/HSD_VAULT/'
+alias do='cd /mnt/d/GDrive/HSD/HSD_GIT/'
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -158,3 +159,7 @@ alias dv='cd ~/vaults/HSD_VAULT/'
 #source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #source /home/scott/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

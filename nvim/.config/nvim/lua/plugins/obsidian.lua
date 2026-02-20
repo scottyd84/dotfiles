@@ -10,7 +10,7 @@ return {
     workspaces = {
       {
         name = "HSD",
-        path = "~/vaults/HSD_VAULT/",
+        path = "/mnt/d/GDrive/HSD/",
       },
     },
 
