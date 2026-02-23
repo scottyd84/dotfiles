@@ -5,12 +5,13 @@ return {
   ft = "markdown",
   dependencies = {
     "nvim-lua/plenary.nvim",
+    "hrsh7th/nvim-cmp",
   },
   opts = {
     workspaces = {
       {
         name = "HSD",
-        path = "/mnt/d/GDrive/HSD/",
+        path = "/mnt/c/Vaults/HSD/",
       },
     },
 
