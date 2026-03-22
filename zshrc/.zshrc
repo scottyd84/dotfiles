@@ -1,3 +1,5 @@
+emulate -LR zsh
+setopt aliases
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -14,7 +16,8 @@ export ZSH="$HOME/.oh-my-zsh"
 
 
 # Other custom path additions
-export PATH="~/.gem/gems/vimgolf-0.5.0/bin:$PATH"
+# Other custom path additions
+# export PATH="$HOME/.gem/gems/vimgolf-0.5.0/bin:$PATH"
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 
 # Set name of the theme to load --- if set to "random", it will
@@ -83,11 +86,13 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git aliases zsh-syntax-highlighting)
+plugins=(git aliases zsh-syntax-highlighting nvm)
 
-# Optional: Skip completion warnings
-ZSH_DISABLE_COMPFIX="true"
-source $ZSH/oh-my-zsh.sh
+# Load Oh My Zsh only once per shell session (prevents errors on `source ~/.zshrc`)
+if [[ -z "${__OMZ_LOADED-}" ]]; then
+  export __OMZ_LOADED=1
+  source "$ZSH/oh-my-zsh.sh"
+fi
 
 # User configuration
 
@@ -113,53 +118,17 @@ source $ZSH/oh-my-zsh.sh
 # - $ZSH_CUSTOM/aliases.zsh
 # - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-alias zshconfig="mate ~/.zshrc"
-alias ohmyzsh="mate ~/.oh-my-zsh"
-# --- My Custom Aliases ---
+## --- My Custom Aliases ---
 
-# Human-readable ls with all files and sizes
-alias ll='ls -lha'
+# Load local, reloadable config (aliases, exports, functions)
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
-# A more visual and helpful grep
-alias grep='grep --color=auto'
-
-# Shortcut to clear the terminal
-alias c='clear'
-
-# Constantly updating and upgrading your system? (For Debian/Ubuntu)
-alias update='sudo apt update && sudo apt upgrade -y'
-
-# Get your public IP address
-alias myip='curl ifconfig.me; echo'
-
-# Auto-activate Neovim virtual environment when needed
-alias nvim-venv='source ~/.virtualenvs/neovim/bin/activate'
-
-# ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# common directories
-alias dc='cd ~/.config'
-alias dl='cd ~/Downloads'
-alias dt='cd ~/Desktop'
-alias ws='cd ~/Workspace'
-alias docs='cd ~/Documents' 
-alias ds='cd ~/git/ds/'
-alias dv='cd ~/vaults/HSD_VAULT/'
-alias do='cd /mnt/d/GDrive/HSD/HSD_GIT/'
+# Convenience reload: reload only local config (safe)
+reloadzsh() { source "$HOME/.zshrc.local"; }
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-#source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#source /home/scott/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Use custom tmux config location
+alias tmux='tmux -f ~/tmux/tmux.conf'
