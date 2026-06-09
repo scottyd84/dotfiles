@@ -20,6 +20,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # export PATH="$HOME/.gem/gems/vimgolf-0.5.0/bin:$PATH"
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+ssh-add -l &>/dev/null || ssh-add ~/.ssh/id_ed25519 &>/dev/null
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -130,5 +133,4 @@ reloadzsh() { source "$HOME/.zshrc.local"; }
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Use custom tmux config location
-alias tmux='tmux -f ~/tmux/tmux.conf'
+. "$HOME/.local/bin/env"
