@@ -4,5 +4,8 @@
 # Quick reload of this file
 alias rz='reloadzsh'
 
+# Git status
+alias gs='git status'
+
 # Resume the hdg Claude chat session
 alias hdg-chat='cd ~ && claude --resume 2de51129-8146-457d-9bb4-b89216aab85a'
