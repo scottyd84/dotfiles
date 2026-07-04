@@ -1,5 +1,8 @@
 # Local, reloadable zsh config (aliases, exports, functions).
 # Re-source without restarting the shell: `reloadzsh`
 
+# Quick reload of this file
+alias rz='reloadzsh'
+
 # Resume the hdg Claude chat session
 alias hdg-chat='cd ~ && claude --resume 2de51129-8146-457d-9bb4-b89216aab85a'
