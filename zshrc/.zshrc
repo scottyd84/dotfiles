@@ -126,8 +126,7 @@ fi
 # Load local, reloadable config (aliases, exports, functions)
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
-# Convenience reload: reload only local config (safe)
-reloadzsh() { source "$HOME/.zshrc.local"; }
+# reloadzsh() + personal aliases now live in ~/.zshrc.local (sourced above)
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
